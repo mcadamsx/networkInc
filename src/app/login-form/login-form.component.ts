@@ -1,29 +1,33 @@
-import {Component, inject} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, } from "@angular/forms";
+import {NgIf} from "@angular/common";
+import {Component, } from '@angular/core';
+import {FormBuilder, ReactiveFormsModule, Validators,} from "@angular/forms";
+import {ButtonModule} from "primeng/button";
 import {SignupFormComponent} from "../signup-form/signup-form.component";
 import {RouterModule} from "@angular/router";
-import {NetworkIncServiceService} from "../network-inc-service.service";
-import {NetworkIncType} from "../network-inc-type";
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule,SignupFormComponent,RouterModule ],
+  imports: [
+    ReactiveFormsModule,
+    SignupFormComponent,
+    RouterModule,
+    NgIf,
+    ButtonModule,
+  ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
 export class LoginFormComponent {
-
-  loginDetails = inject(NetworkIncServiceService)
-
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
   });
-submitLogin(){
-  this.loginDetails.submitLogin(
-    this.loginForm.value.email ?? "",
-    this.loginForm.value.password ?? ""
-    )
-}
+  constructor(private fb: FormBuilder) {}
+  get email() {
+    return this.loginForm.controls['email'];
+  }
+  get password() {
+    return this.loginForm.controls['password'];
+  }
 }

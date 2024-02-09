@@ -1,6 +1,6 @@
 <section class=" h-96  sm:w-full max-h-full my-10% ">
 
-  <form [formGroup]="loginForm" (submit)="submitLogin()" class=" mx-15%">
+  <form [formGroup]="loginForm" class=" mx-15%">
     <label class="">Email address</label>
     <div class="relative w-full mb-5%">
       <input
@@ -9,10 +9,18 @@
       <div type="submit"
            class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-secondary rounded-e-lg 0">
         <svg width="15" height="15" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.05562 0.841919L19.2307 0.841919C19.4985 0.841919 19.7553 0.9483 19.9447 1.13766C20.134 1.32702 20.2404 1.58385 20.2404 1.85165V18.0073C20.2404 18.2751 20.134 18.5319 19.9447 18.7213C19.7553 18.9106 19.4985 19.017 19.2307 19.017H1.05562C0.787829 19.017 0.531001 18.9106 0.34164 18.7213C0.15228 18.5319 0.0458984 18.2751 0.0458984 18.0073L0.0458984 1.85165C0.0458984 1.58385 0.15228 1.32702 0.34164 1.13766C0.531001 0.9483 0.787829 0.841919 1.05562 0.841919ZM18.221 5.12114L10.2159 12.2902L2.06535 5.09893L2.06535 16.9975H18.221V5.12114ZM2.58132 2.86137L10.2048 9.58817L17.7181 2.86137L2.58132 2.86137Z" fill="white"/>
+          <path  d="M1.05562 0.841919L19.2307 0.841919C19.4985 0.841919 19.7553 0.9483 19.9447 1.13766C20.134 1.32702 20.2404 1.58385 20.2404 1.85165V18.0073C20.2404 18.2751 20.134 18.5319 19.9447 18.7213C19.7553 18.9106 19.4985 19.017 19.2307 19.017H1.05562C0.787829 19.017 0.531001 18.9106 0.34164 18.7213C0.15228 18.5319 0.0458984 18.2751 0.0458984 18.0073L0.0458984 1.85165C0.0458984 1.58385 0.15228 1.32702 0.34164 1.13766C0.531001 0.9483 0.787829 0.841919 1.05562 0.841919ZM18.221 5.12114L10.2159 12.2902L2.06535 5.09893L2.06535 16.9975H18.221V5.12114ZM2.58132 2.86137L10.2048 9.58817L17.7181 2.86137L2.58132 2.86137Z" fill="white"/>
         </svg>
       </div>
+
     </div>
+    <small *ngIf="email.invalid && (email.dirty || email.touched)"
+           class="block p-error"
+
+    >
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+      <div *ngIf="email.errors?.['required']">Email should be valid.</div>
+    </small>
     <label for="" class="">Password</label>
     <div class="relative w-full mb-5 ">
       <input
@@ -32,22 +40,30 @@
         </svg>
 
       </div>
+
     </div>
+    <small *ngIf="password.invalid && (password.dirty || password.touched)"
+           class="block p-error"
+    >
+      <div *ngIf="password.errors?.['required']">Password is required.</div>
+    </small>
     <a href="" class="font-light underline text-xs float-end hover:text-blue-600">Forgot password?</a> <br>
 
-    <button [routerLink]="['']"  class="bg-secondary mt-5% text-white font-light py-2 px-4 rounded w-full hover:bg-off-secondary" type="submit"> Login now</button>
+    <button
+      [disabled]="loginForm.invalid"
+      [routerLink]="['signup']"  class="bg-secondary mt-5% text-white font-light py-2 px-4 rounded w-full hover:bg-off-secondary" type="submit"> Login now</button>
     <div class="flex align-middle items-center w-full ">
       <hr class="w-full">
       <div class="m-5">OR</div>
       <hr class="w-full">
     </div>
     <button
+
       [routerLink]="['signup']"
       class="   border border-secondary  text-secondary font-light py-2 px-4 rounded w-full hover:bg-secondary ease-in hover:text-white">
       Signup now
     </button>
   </form>
-
 </section>
 
 
