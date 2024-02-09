@@ -4,7 +4,6 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fr
 import {ActivatedRoute} from "@angular/router";
 import {RouterModule} from "@angular/router";
 import {RouterLink} from "@angular/router";
-import {passwordMatchValidator} from "../shared/password-match.directive"
 import {NetworkIncServiceService} from "../network-inc-service.service";
 
 @Component({
@@ -20,11 +19,7 @@ export class SignupFormComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required],
-  }, {
-    validators: passwordMatchValidator
-  });
-
-
+  })
   constructor(private fb: FormBuilder) {}
   get username (){
     return this.signupForm.controls['username'];

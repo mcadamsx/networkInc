@@ -23,6 +23,7 @@ export class LoginFormComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
+
   constructor(private fb: FormBuilder) {}
   get email() {
     return this.loginForm.controls['email'];
