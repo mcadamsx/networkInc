@@ -1,9 +1,9 @@
-import {NgIf} from "@angular/common";
-import {Component, } from '@angular/core';
-import {FormBuilder, ReactiveFormsModule, Validators,} from "@angular/forms";
-import {ButtonModule} from "primeng/button";
-import {SignupFormComponent} from "../signup-form/signup-form.component";
-import {RouterModule} from "@angular/router";
+import { NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { SignupFormComponent } from '../signup-form/signup-form.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -23,11 +23,12 @@ export class LoginFormComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
-
   constructor(private fb: FormBuilder) {}
+
   get email() {
     return this.loginForm.controls['email'];
   }
+
   get password() {
     return this.loginForm.controls['password'];
   }

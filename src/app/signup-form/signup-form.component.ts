@@ -1,10 +1,9 @@
-import {NgIf} from "@angular/common";
+ import {NgIf} from "@angular/common";
 import {Component, inject} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {RouterModule} from "@angular/router";
 import {RouterLink} from "@angular/router";
-import {NetworkIncServiceService} from "../network-inc-service.service";
 
 @Component({
   selector: 'app-signup-form',
