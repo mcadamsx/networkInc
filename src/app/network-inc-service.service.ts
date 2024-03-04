@@ -5,7 +5,7 @@ import {NetworkIncType} from "./network-inc-type";
   providedIn: 'root'
 })
 export class NetworkIncServiceService {
-
+  
   constructor() { }
 
   submitLogin(email:string, password: string){
@@ -13,6 +13,5 @@ export class NetworkIncServiceService {
   }
   submitSignUp (username:string,email:string,password:string,confirmPassword:string){
     console.log(`${username}\n ${email}\n${password}\n${confirmPassword}`)
-
   }
 }
